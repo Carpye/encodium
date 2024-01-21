@@ -74,6 +74,7 @@ const MessagesForm = () => {
     values: z.infer<typeof formSchema>,
     mode: "encrypt" | "decrypt",
   ) {
+    setIsLoading(true)
     if (mode === "encrypt") {
       encrypt(values.message)
     } else if (mode === "decrypt") {
@@ -110,7 +111,6 @@ const MessagesForm = () => {
               <form
                 onSubmit={encryptForm.handleSubmit((values) => {
                   onSubmit(values, "encrypt")
-                  setIsLoading(true)
                 })}
                 className="flex flex-col gap-4 w-[400px]"
               >
